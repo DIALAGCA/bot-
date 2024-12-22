@@ -1,0 +1,59 @@
+import discord
+from discord.ext import commands
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix='$', intents=intents)
+@bot.event
+async def on_ready():
+    print(f'We have logged in as {bot.user}')
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f'Hola, soy el bot {bot.user}!')
+@bot.command()
+async def consecuencias(ctx):
+    
+    file = discord.File('gi_basura01_090611.jpg',filename='gi_basura_090611.jpg')
+    await ctx.send("estas son algunas consecuencias de dejar los residuos tirados:")
+    await ctx.send(" los residuos se acumulan y sus componentes quimicos dañan el ambiente")
+    await ctx.send(file=file)
+    file = discord.File('image.png',filename='image.png')
+    await ctx.send(file=file)
+
+
+@bot.command()
+async def separacion(ctx):
+    await ctx.send(f'Hola, las formas separacion de residuos.... ')
+
+@bot.command()
+async def tipos(ctx):
+    file = discord.File('media/3R.jpg', filename='3R.jpg')
+    await ctx.channel.send('# **Concientizacion sobre las RRR**')
+    await ctx.channel.send('Los adoolescentes necesitan ser concientes de las RRR')
+    await ctx.channel.send('Las RRR significan: **Reciclar, Reutilizar y Reducir.**')
+    await ctx.channel.send('Al aplicar estas tecnicas, los adolescentes pueden aprender a manejar su basura.')
+    await ctx.channel.send('tambien, las RRR los motivan a reciclar y reutilizar la basura, especialmente si tienen deberes como proyectos o tareas.')
+    await ctx.send(file=file)
+
+
+
+
+
+
+@bot.command()
+async def tipos(ctx):
+    try:
+        file = discord.File('media/tipos.jpeg', filename='tipos.jpeg')
+        await ctx.send('De esta forma puedes separar los tipos de residuos:', file=file)
+    except FileNotFoundError:
+        await ctx.send('No se encontró el archivo tipos.jpeg. Asegúrate de que esté en el directorio correcto.')
+
+@bot.command()
+async def club(ctx):
+    club_list = [
+        "Club de Ajedrez 1: Jakob Wan\n",
+        "Club de Ajedrez 2: Jakob Wan\n",
+        "Club de Ajedrez 3: Jakob Wan",
+        "Club de valorant  : NICANOR",
+    ]
+    await ctx.send(f'Aquí está la lista de clubes:\n{club_list}')
+bot.run("") 
